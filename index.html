@@ -23,10 +23,122 @@
 </nav>
 
 <h1>Zo's Basketball Journey</h1>
-<p>Throughout the course of my 19 year old life, I have travelled far and wide playing basketball. Explore my journey using the menu above: Portland, Miami, and Spokane.</p>
-<p><p>Today, I'm is a student at <a href="https://www.gonzaga.edu">Gonzaga</a>. Questions or want to talk hoops? <a href="mailto:ametz3@zagmail.gonzaga.edu">Email me</a>.</p>
+<p>Throughout the course of his 19 year old life, Alonzo has travelled far and wide playing basketball. Explore his journey using the menu above: Portland, Miami, and Spokane.</p>
+<p>Today he is a student at <a href="https://www.gonzaga.edu">Gonzaga</a>. Questions or want to talk hoops? <a href="mailto:ametz3@zagmail.gonzaga.edu">Email me</a>.</p>
 
-<div class="showcase"></div>
+<div class="showcase">
+
+<!-- HTML: three cards, one per city. Each has a front (the city) and a back (a fun fact). -->
+<div class="showcase-wrap">
+    <p class="showcase-hint">Click a card to flip it!</p>
+    <div class="showcase-cards">
+        <button class="showcase-card" type="button">
+            <span class="showcase-inner">
+                <span class="showcase-front">Portland</span>
+                <span class="showcase-back">Nicknamed Rip City, home of the Trail Blazers. [Add your own fact]</span>
+            </span>
+        </button>
+        <button class="showcase-card" type="button">
+            <span class="showcase-inner">
+                <span class="showcase-front">Miami</span>
+                <span class="showcase-back">Home of the Miami Heat. [Add your own fact]</span>
+            </span>
+        </button>
+        <button class="showcase-card" type="button">
+            <span class="showcase-inner">
+                <span class="showcase-front">Spokane</span>
+                <span class="showcase-back">Home of Gonzaga basketball. [Add your own fact]</span>
+            </span>
+        </button>
+    </div>
+</div>
+
+<!-- CSS: styles for the cards and the flip animation. Every rule starts with .showcase. -->
+<style>
+.showcase {
+    --main: #2b5d8c;
+    --accent: #c46a1a;
+    font-family: Georgia, "Times New Roman", serif;
+    max-width: 600px;
+    max-height: 480px;
+    margin: 1rem auto;
+}
+.showcase .showcase-wrap {
+    text-align: center;
+}
+.showcase .showcase-hint {
+    margin: 0 0 0.5rem;
+    color: var(--main);
+}
+.showcase .showcase-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+}
+.showcase .showcase-card {
+    perspective: 1000px;
+    height: 140px;
+    background: none;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    font: inherit;
+}
+.showcase .showcase-inner {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+.showcase .showcase-card.flipped .showcase-inner {
+    transform: rotateY(180deg);
+}
+.showcase .showcase-front,
+.showcase .showcase-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-radius: 12px;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+}
+.showcase .showcase-front {
+    background: var(--main);
+    color: #ffffff;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.showcase .showcase-back {
+    background: var(--accent);
+    color: #ffffff;
+    font-size: 0.9rem;
+    transform: rotateY(180deg);
+}
+.showcase .showcase-card:hover .showcase-front {
+    opacity: 0.9;
+}
+</style>
+
+<!-- JavaScript: clicking a card adds or removes the "flipped" class, which flips it. -->
+<script>
+var showcaseCards = document.querySelectorAll(".showcase .showcase-card");
+showcaseCards.forEach(function (card) {
+    card.addEventListener("click", function () {
+        card.classList.toggle("flipped");
+    });
+});
+</script>
+
+</div>
 
 <footer>Built by Alonzo Metz &middot; BMIS 235</footer>
 
